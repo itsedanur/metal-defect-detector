@@ -1,14 +1,13 @@
 from model_builder import build_model
 from data_loader import get_data_generators
 
-# 🔄 Veri setlerini yükle
 train_gen, valid_gen, test_gen = get_data_generators()
 
 print(f"Eğitimde {train_gen.samples} görüntü var.")
 print(f"Doğrulamada {valid_gen.samples} görüntü var.")
 print(f"Testte {test_gen.samples} görüntü var.")
 
-# 🧠 Modeli oluştur
+
 model = build_model(num_classes=6)
 
 # 🏋️‍♀️ Eğitimi başlat
@@ -19,14 +18,13 @@ history = model.fit(
     verbose=1
 )
 
-# 🧪 Test verisi üzerinde modeli değerlendir
 loss, acc = model.evaluate(test_gen)
 print(f"\nTest doğruluğu: {acc:.4f} | Test kaybı: {loss:.4f}")
 
-# 💾 Eğitilen modeli kaydet
+
 model.save("my_model.keras")
 
-# 📈 Eğitim geçmişini görselleştir
+
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
@@ -55,15 +53,15 @@ def plot_training_history(history):
     axes[1].legend()
 
     plt.tight_layout()
-    plt.savefig("egitim_grafikleri.png")  # 🔽 Grafik dosyasını kaydet
-    print("Grafik kaydedildi: egitim_grafikleri.png")  # ✅ Bildirim
+    plt.savefig("egitim_grafikleri.png")  
+    print("Grafik kaydedildi: egitim_grafikleri.png")  
     plt.show()
 
 plot_training_history(history)
 
-# 🔥 Grad-CAM görselleştirme
+
 from gradcam import display_gradcam
 
 image_path = "/Users/edanurunal/Desktop/NEU Metal Surface Defects Data/test/Inclusion/In_105.bmp"
-last_conv_layer = "Conv_1"  # 💡 model_builder.py'deki en son Conv2D katman adı
+last_conv_layer = "Conv_1"  
 display_gradcam(image_path, model, last_conv_layer_name=last_conv_layer)
