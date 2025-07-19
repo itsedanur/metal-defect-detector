@@ -1,17 +1,29 @@
-#  Metal Defect Detector with Grad-CAM
+# 🔍 Metal Defect Detector with Grad-CAM
 
-Bu proje, metal yüzeylerdeki üretim hatalarını tespit etmek için derin öğrenme (CNN) kullanır ve sonuçları Grad-CAM ile görselleştirir.
+Bu proje, metal yüzeylerdeki üretim hatalarını tespit eden bir derin öğrenme (CNN) sistemidir. Grad-CAM sayesinde görselleştirme yapılabilir.  
 
-##  Özellikler
-- CNN ile sınıflandırma (6 sınıf)
-- Test görselleriyle tahmin
-- Grad-CAM ile ısı haritası
-- Streamlit arayüzü
-- Gerçek zamanlı kamera desteği (OpenCV)
+## Özellikler
+-  6 sınıflı metal yüzey kusur sınıflandırması
+-  Grad-CAM ile ısı haritası görselleştirme
+-  Streamlit ile görsel arayüz
+-  Gerçek zamanlı kamera ile canlı tahmin (OpenCV)
 
-##  Nasıl çalıştırılır
+##  Dosyalar
+- `train.py` – Modeli eğitir ve kaydeder (`my_model.keras`)
+- `streamlit_app.py` – Web arayüzü ile tahmin ve Grad-CAM
+- `realtime_camera_predict.py` – Webcam ile tahmin
+- `gradcam.py` – Grad-CAM üretici
+- `data_loader.py` – Eğitim/validasyon/test veri yükleyici
+- `model_builder.py` – CNN mimarisi oluşturucu
+- `generate_gradcam_all.py` – Tüm test görselleri için Grad-CAM oluşturur
 
+## Gerekli Kurulumlar
 ```bash
-python train.py
-streamlit run streamlit_app.py
-python realtime_camera_predict.py
+pip install tensorflow opencv-python streamlit matplotlib pillow
+
+Kullanılan Teknolojiler
+
+TensorFlow / Keras
+Streamlit
+OpenCV
+Grad-CAM
