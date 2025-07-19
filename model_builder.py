@@ -5,7 +5,7 @@ from tensorflow.keras.optimizers import Adam
 
 def build_model(num_classes=6, img_size=(224, 224, 3)):
     base_model = MobileNetV2(include_top=False, weights='imagenet', input_shape=img_size)
-    base_model.trainable = False  # Önceden eğitilmiş ağı dondur
+    base_model.trainable = False  
 
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
