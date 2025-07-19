@@ -10,7 +10,7 @@ print(f"Testte {test_gen.samples} görüntü var.")
 
 model = build_model(num_classes=6)
 
-# 🏋️‍♀️ Eğitimi başlat
+
 history = model.fit(
     train_gen,
     validation_data=valid_gen,
