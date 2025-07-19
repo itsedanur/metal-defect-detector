@@ -3,14 +3,14 @@ import numpy as np
 from tensorflow.keras.models import load_model
 import os
 
-# 🔧 Modeli tam yoldan yükle
+
 BASE_DIR = os.path.dirname(__file__)
 model_path = os.path.join(BASE_DIR, "my_model.keras")
 model = load_model(model_path)
 
 CLASS_NAMES = ['Crazing', 'Inclusion', 'Patches', 'Pitted', 'Rolled', 'Scratches']
 
-cap = cv2.VideoCapture(0)  # Kamera aç
+cap = cv2.VideoCapture(0) 
 
 while True:
     ret, frame = cap.read()
@@ -38,4 +38,4 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
-print("📷 Kamera kapatıldı. Uygulama sonlandırıldı.")
+print(" Kamera kapatıldı. Uygulama sonlandırıldı.")
